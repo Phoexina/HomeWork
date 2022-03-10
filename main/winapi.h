@@ -9,6 +9,6 @@
 void initsocket();
 PIP_ADAPTER_INFO getAllAdapterInfo();
 QString LanScan(UINT srcIp,UINT uIp);
-void constructARP(char *srcmac,char *dstmac,char *srcip,char *dstip,char *buffer);
+void constructARP(char* mymac,char *srcmac,char *dstmac,char *srcip,char *dstip,char *buffer);
 
 #endif // WINAPI_H

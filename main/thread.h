@@ -52,7 +52,7 @@ public:
             return;
         }
         LPPACKET lpPacket=PacketAllocatePacket();
-        PacketInitPacket(lpPacket,buffer,512);
+        PacketInitPacket(lpPacket,buffer,42);
         while(flag){
             if(PacketSetNumWrites(lpAdapter,2)==FALSE){
                 emit log("ARP FAKE:Packet SetNum ERROR");
@@ -75,7 +75,7 @@ public:
         flag=false;
     }
 
-    void setInfo(char* adaptername,QString s_mac,QString s_ip,QString d_mac,QString d_ip){
+    void setInfo(char *mymac,char *adaptername,QString s_mac,QString s_ip,QString d_mac,QString d_ip){
         strcpy(name, "//Device//NPF_");
         strcat(name, adaptername);
         datalog="src:"+s_ip+"("+s_mac+")"+"\ndst:"+d_ip+"("+d_mac+")";
@@ -101,7 +101,7 @@ public:
         tch=tt.data();
         memcpy(dstip,tch,20);
 
-        constructARP(srcmac,dstmac,srcip,dstip,buffer);
+        constructARP(mymac,srcmac,dstmac,srcip,dstip,buffer);
         flag=true;
 
 

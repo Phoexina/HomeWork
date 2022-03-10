@@ -71,7 +71,7 @@ void MainWindow::initFakeList(){
     fakemodel->setHeaderData(1,Qt::Horizontal,"Dst host");
 
     ui->fakeTable->setColumnWidth(0,550);
-    ui->fakeTable->setColumnWidth(1,190);
+    ui->fakeTable->setColumnWidth(1,210);
 }
 
 
@@ -160,6 +160,7 @@ void MainWindow::on_ipmacTable_doubleClicked(const QModelIndex &index){
     QString dstmac=macmodel->item(row,1)->text();
     QString srcmac=ui->fakemacText->text();
     QString srcip=ui->fakeipText->text();
+
     if(srcmac=="") srcmac="00-00-00-00-00-00";
     if(srcip=="") srcip="0.0.0.0";
 
@@ -177,7 +178,9 @@ void MainWindow::on_ipmacTable_doubleClicked(const QModelIndex &index){
     initFakeList();
     QApplication::processEvents();
 
-    th->setInfo(cur->AdapterName,srcmac,srcip,dstmac,dstip);
+    char mymac[20];
+    sprintf(mymac,"%02x-%02x-%02x-%02x-%02x-%02x",cur->Address[0],cur->Address[1],cur->Address[2],cur->Address[3],cur->Address[4],cur->Address[5]);
+    th->setInfo(mymac,cur->AdapterName,srcmac,srcip,dstmac,dstip);
     th->start();
 
 }

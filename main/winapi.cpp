@@ -108,6 +108,13 @@ void StrToMac(char *str,unsigned char *mac){
             case 'd':high=13;break;
             case 'e':high=14;break;
             case 'f':high=15;break;
+            case 'A':high=10;break;
+            case 'B':high=11;break;
+            case 'C':high=12;break;
+            case 'D':high=13;break;
+            case 'E':high=14;break;
+            case 'F':high=15;break;
+
             default:
                 temp=*str;
                 high=atoi(&temp);
@@ -119,6 +126,12 @@ void StrToMac(char *str,unsigned char *mac){
             case 'd':low=13;break;
             case 'e':low=14;break;
             case 'f':low=15;break;
+            case 'A':low=10;break;
+            case 'B':low=11;break;
+            case 'C':low=12;break;
+            case 'D':low=13;break;
+            case 'E':low=14;break;
+            case 'F':low=15;break;
             default:
                 temp=*str1;
                 low=atoi(&temp);
@@ -130,11 +143,13 @@ void StrToMac(char *str,unsigned char *mac){
 }
 
 
-void constructARP(char *srcmac,char *dstmac,char *srcip,char *dstip,char *buffer){
+void constructARP(char* mymac,char *srcmac,char *dstmac,char *srcip,char *dstip,char *buffer){
+    unsigned char my_mac[20]={0};
     unsigned char s_mac[20]={0};
     unsigned char d_mac[20]={0};
     unsigned char s_ip[4]={0};
     unsigned char d_ip[4]={0};
+    StrToMac(mymac,my_mac);
     StrToMac(srcmac,s_mac);
     StrToMac(dstmac,d_mac);
     inet_pton(AF_INET, srcip, &s_ip);
@@ -143,7 +158,7 @@ void constructARP(char *srcmac,char *dstmac,char *srcip,char *dstip,char *buffer
 
     ET_HEADER et_header;
     et_header.eh_type=htons(0x0806);
-    memcpy(et_header.eh_src,s_mac,6);
+    memcpy(et_header.eh_src,my_mac,6);
     memcpy(et_header.eh_dst,d_mac,6);
 
 
