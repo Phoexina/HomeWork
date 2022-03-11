@@ -56,11 +56,7 @@ QString LanScan(UINT srcIp,UINT uIp){
 
 }
 
-void initsocket(){
-    WSADATA data;
-    WORD wVersion = MAKEWORD(2,2);
-    WSAStartup(wVersion,&data);
-}
+
 
 PIP_ADAPTER_INFO getAllAdapterInfo(){
     PIP_ADAPTER_INFO pAdapterInfo=NULL;

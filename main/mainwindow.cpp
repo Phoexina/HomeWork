@@ -224,12 +224,12 @@ void MainWindow::showAttackHelp(){
     QMessageBox msgBox;
     msgBox.setText("ARP ATTACK TIPS");
     msgBox.setInformativeText("1.在输入框中输入伪装成的ip和mac地址\n"
-                              "2.从扫描出的主机列表中选择想要攻击的主机，选中双击\n"
+                              "2.从扫描出的主机列表中选择想要攻击的主机并双击\n"
                               "3.将会弹出是否攻击的确认窗口，点击确认\n"
-                              "4.攻击列表添加本次攻击，将会持续发送攻击包，可在log中观察\n"
-                              "5.若想停止某次攻击，则选中攻击列表中的那项，双击\n"
-                              "6.将会弹出是否停止攻击的确认窗口，点击确认后攻击结束\n"
-                              "7.可以用不同网卡分别进行不同的攻击0v0\n");
+                              "4.攻击列表添加本次攻击，将会持续发送攻击包\n"
+                              "5.若想停止某次攻击，则双击攻击列表中的那项\n"
+                              "6.确认停止攻击后，本项攻击停止\n"
+                              "7.可以用不同网卡分别进行不同的攻击0v0");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();

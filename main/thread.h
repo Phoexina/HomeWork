@@ -29,9 +29,6 @@ public:
 private:
     UINT srcip;
     UINT dstip;
-
-
-
 //声明信号
 signals:
     void send(QString,QString);
